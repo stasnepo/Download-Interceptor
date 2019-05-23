@@ -23,7 +23,7 @@ def process_packet(packet):
         # Target specific Field
         if scapy_packet[scapy.TCP].dport ==80:
             # Desired file format
-            if ".exe" in scapy_packet[scapy.Raw].load:
+            if ".exe" in scapy_packet[scapy.Raw].load and "www.example.com" not in scapy_packet[scapy.Raw].load:
                 print("[+] Download request DETECTED !")
                 # ack must be verified to accept handshake
                 ack_list.append(scapy_packet[scapy.TCP].ack)
